@@ -270,38 +270,16 @@ class FKIK_setup(object):
             blend_node.output >> self.slave_JNT_list[x].rotate
         
         self.FKIK_blend_list = blend_list
-        
+
+    # TO-DO:
+    #     - Create controller setup to connect to self.FKIK_blend_list
+    #     - Create FK arm controller hierarchy + connect to FK joints
+    #     - Create IK arm controls (complete with poleVector constraint)
+    #     - Work on setting up FK/IK switch/position snapping.
         
 
 # Execution of the code
 FKIK = FKIK_setup()
 FKIK.UI()
 
-
-#
-#FKIK.FKIK_query_orientation()
-#FKIK.slave_shoulder.setOrientation(FKIK.FKIK_query_orientation()[0].asQuaternion())
 ## End of Code ##
-'''
-temp_orient = pm.aimConstraint(FKIK.slave_elbow, FKIK.slave_shoulder, aimVector=[1,0,0], worldUpObject=FKIK.slave_wrist)
-temp_orientA_value = FKIK.slave_shoulder.getRotation()
-FKIK.slave_shoulder.setOrientation(temp_orientA_value.asQuaternion())
-
-pm.datatypes.EulerRotation([0,1,0])
-#dir(FKIK.slave_shoulder)
-#help(FKIK.slave_shoulder.orientJoint)
-#FKIK.slave_shoulder.orientJoint('xyz', zso=True, children=True)
-
-LOC = pm.spaceLocator()
-LOC.setTranslation(FKIK.FKIK_query_poleVector(FKIK.slave_JNT_list))
-
-
-
-
-
-
-
-
-
-
-'''
